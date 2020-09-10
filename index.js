@@ -78,6 +78,7 @@ class CountDown extends React.Component {
 
   _handleAppStateChange = currentAppState => {
     const {until, wentBackgroundAt} = this.state;
+    
     if (currentAppState === 'active' && wentBackgroundAt && this.props.running) {
       const diff = (Date.now() - wentBackgroundAt) / 1000.0;
       this.setState({
@@ -125,7 +126,7 @@ class CountDown extends React.Component {
       }
       this.setState({
         lastUntil: this.state.until,
-        until: Math.max(0, this.state.until - 1)
+        until: Math.max(0, this.state.until + 1)
       });
     }
   };
